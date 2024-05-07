@@ -37,3 +37,5 @@
 
 ### Fim do Programa
 `end main` - Indica o fim do programa.
+
+![image](https://github.com/Matheus-Bertol/AssemblyAtividade02/assets/141282448/89da1a55-217f-4d21-ad30-71a1d18c1f6f)
