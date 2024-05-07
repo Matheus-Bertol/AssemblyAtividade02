@@ -1,20 +1,19 @@
-.MODEL small ;Define o modelo de memória small
-.STACK 64 ;Aloca um espaço de 64 bytes p/ a pilha
+.MODEL small             ; Define o modelo de memória small.
+.STACK 64                ; Aloca um espaço de 64 bytes para a pilha.
 
-.DATA ; inicio da seção de dados
-message db 'Soldador', '$'; Define a mensagem e termina com $ 
+.DATA                    ; Início da seção de dados.
+message db 'Soldador', '$' ; Define a mensagem e termina com o caractere '$'.
 
+.CODE                    ; Início da seção de código.
+main proc                ; Define o início do procedimento principal.
 
-.CODE ; Inicio da seção de código
-main proc ; Define o inicio do procedimento principal
+mov ax, @data            ; Carrega o endereço do segmento de dados em AX.
+mov ds, ax               ; Move o valor em AX para o registrador DS.
 
-mov ax, @data ; Carrega o endereço do segmento em AX 
-mov ds, ax ; move o valor em ax para o registrador ds 
+mov ah, 9h               ; Prepara o registrador AH para a função 09h do DOS (exibir string).
+mov dx, offset message   ; Armazena o deslocamento da mensagem em DX.
 
-mov ah, 9h ;Preparar o registrador AH para a função 09h do DOS
-mov dx, offset message; fazer o deslocamento da msg em DX
+int 21h                  ; Realiza a interrupção do DOS para exibir a string.
 
-int 21h ; Instrução de interrupção
-
-main endp ; marca o fim de um procedimento
-end main ; indica o fim
+main endp                ; Marca o fim do procedimento principal.
+end main                 ; Indica o fim do programa.
